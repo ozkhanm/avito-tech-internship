@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Page header renders correctly on article page screen 1`] = `
-<div>
+<div
+  className="header-container"
+>
   <div
     className="header-controls"
   >
@@ -24,7 +26,9 @@ exports[`Page header renders correctly on article page screen 1`] = `
 `;
 
 exports[`Page header renders correctly on main page screen 1`] = `
-<div>
+<div
+  className="header-container"
+>
   <div
     className="header-controls"
   >

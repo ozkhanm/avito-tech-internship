@@ -20,7 +20,7 @@ exports[`Comment component with kids renders correctly 1`] = `
         className="comment-item"
       >
         at: 
-        18.02.2022, 22:16
+        18.02.2022, 23:16
       </p>
     </div>
     <p
@@ -62,7 +62,7 @@ exports[`Comment component without kids renders correctly 1`] = `
         className="comment-item"
       >
         at: 
-        18.02.2022, 19:27
+        18.02.2022, 20:27
       </p>
     </div>
     <p
