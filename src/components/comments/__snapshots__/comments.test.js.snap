@@ -23,7 +23,7 @@ exports[`Comments container renders correctly if data fetched 1`] = `
           className="comment-item"
         >
           at: 
-          18.02.2022, 19:45
+          18.02.2022, 20:45
         </p>
       </div>
       <p
@@ -62,7 +62,7 @@ exports[`Comments container renders correctly if data fetched 1`] = `
           className="comment-item"
         >
           at: 
-          18.02.2022, 21:22
+          18.02.2022, 22:22
         </p>
       </div>
       <p

@@ -2,7 +2,9 @@
 
 exports[`Main page renders correctly if data fetched 1`] = `
 Array [
-  <div>
+  <div
+    className="header-container"
+  >
     <div
       className="header-controls"
     >
@@ -40,7 +42,7 @@ Array [
             <p
               className="additional-content-block"
             >
-              by: yarapavan | at: 20.02.2022, 18:33
+              by: yarapavan | at: 20.02.2022, 19:33
             </p>
           </div>
         </div>
@@ -67,7 +69,7 @@ Array [
             <p
               className="additional-content-block"
             >
-              by: idletom | at: 20.02.2022, 18:33
+              by: idletom | at: 20.02.2022, 19:33
             </p>
           </div>
         </div>
@@ -94,7 +96,7 @@ Array [
             <p
               className="additional-content-block"
             >
-              by: wrp | at: 20.02.2022, 17:38
+              by: wrp | at: 20.02.2022, 18:38
             </p>
           </div>
         </div>
@@ -111,7 +113,9 @@ Array [
 
 exports[`Main page renders correctly if no data fetched 1`] = `
 Array [
-  <div>
+  <div
+    className="header-container"
+  >
     <div
       className="header-controls"
     >
