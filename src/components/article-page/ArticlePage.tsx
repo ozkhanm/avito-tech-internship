@@ -17,7 +17,7 @@ const ArticlePage = ({ activeArticle, isActiveArticleLoaded, changeActiveArticle
             <>
                 <PageHeader page={PAGE.ARTICLE}/>
                 <div className="item-container">
-                    <h1>{activeArticle.title} {activeArticle.url ? <a href={activeArticle.url} className="article-data">({activeArticle.url})</a> : ""}</h1>
+                    <h1>{activeArticle.title} {activeArticle.url ? <a href={activeArticle.url} className="article-data" target="_blank">({activeArticle.url})</a> : ""}</h1>
                     <div className="article-data-block">
                         <p className="article-data">by: {activeArticle.by},</p>
                         <p className="article-data">posted: {getDate(activeArticle.time)},</p>
