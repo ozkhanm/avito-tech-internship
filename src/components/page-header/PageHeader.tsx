@@ -56,7 +56,7 @@ const PageHeader = props => {
 const mapStateToProps = state => ({
     activeArticleId: state.activeArticleId,
     isCommentLoaded: state.isCommentLoaded,
-    refreshStatus: state.refreshStatus
+    refreshStatus: state.refreshStatus,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -77,7 +77,7 @@ const mapDispatchToProps = dispatch => ({
     },
     changeRefreshStatus(status) {
         dispatch(ActionCreator.changeRefreshStatus(status));
-    }
+    },
 });
 
 export { PageHeader };

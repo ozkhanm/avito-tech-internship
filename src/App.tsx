@@ -38,7 +38,7 @@ const mapDispatchToProps = dispatch => ({
   },
   getArticles() {
     dispatch(Operation.getArticles());
-  }
+  },
 });
 
 export default connect(null, mapDispatchToProps)(App);

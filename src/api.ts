@@ -2,7 +2,7 @@ import axios, { AxiosInstance, AxiosResponse } from "axios";
 
 export const api: AxiosInstance = axios.create({
     baseURL: "https://hacker-news.firebaseio.com/v0/",
-    timeout: 10000
+    timeout: 10000,
 });
 
 export const getArticles = async () => {

@@ -38,13 +38,13 @@ const ArticlePage = props => {
 
 const mapStateToProps = state => ({
     activeArticle: state.activeArticle,
-    isActiveArticleLoaded: state.isActiveArticleLoaded
+    isActiveArticleLoaded: state.isActiveArticleLoaded,
 });
 
 const mapDispatchToProps = dispatch => ({
     changeActiveArticleId(articleId) {
         dispatch(ActionCreator.changeActiveArticleId(articleId));
-    }
+    },
 });
 
 export { ArticlePage };

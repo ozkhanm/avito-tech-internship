@@ -96,67 +96,67 @@ describe("Reducer works correctly", () => {
 
     it("Reducer should change articles correclty", () => {
         expect(reducer(initialState, ActionCreator.getArticles(mockArticles))).toEqual(updateInitialState({
-            articles: mockArticles
+            articles: mockArticles,
         }));
     });
 
     it("Reducer should change articles loading status correctly", () => {
         expect(reducer(initialState, ActionCreator.changeLoadingStatus(true))).toEqual(updateInitialState({
-            isDataLoaded: true
+            isDataLoaded: true,
         }));
         expect(reducer(initialState, ActionCreator.changeLoadingStatus(false))).toEqual(updateInitialState({
-            isDataLoaded: false
+            isDataLoaded: false,
         }));
     });
 
     it("Reducer should change active article id correctly", () => {
         expect(reducer(initialState, ActionCreator.changeActiveArticleId(129))).toEqual(updateInitialState({
-            activeArticleId: 129
+            activeArticleId: 129,
         }));
     });
 
     it("Reducer should change article comments correctly", () => {
         expect(reducer(initialState, ActionCreator.getArticleComments(mockComments))).toEqual(updateInitialState({
-            articleComments: mockComments
+            articleComments: mockComments,
         }));
     });
 
     it("Reducer should change article comments loading status correctly", () => {
         expect(reducer(initialState, ActionCreator.changeCommentsLoadingStatus(false))).toEqual(updateInitialState({
-            isCommentLoaded: false
+            isCommentLoaded: false,
         }));
         expect(reducer(initialState, ActionCreator.changeCommentsLoadingStatus(true))).toEqual(updateInitialState({
-            isCommentLoaded: true
+            isCommentLoaded: true,
         }));
     });
 
     it("Reducer should change active article correctly", () => {
         expect(reducer(initialState, ActionCreator.getActiveArticle(mockArticle))).toEqual(updateInitialState({
-            activeArticle: mockArticle
+            activeArticle: mockArticle,
         }));
     });
 
     it("Reducer should change active article loading status correctly", () => {
         expect(reducer(initialState, ActionCreator.changeActiveArticleLoadingStatus(false))).toEqual(updateInitialState({
-            isActiveArticleLoaded: false
+            isActiveArticleLoaded: false,
         }));
         expect(reducer(initialState, ActionCreator.changeActiveArticleLoadingStatus(true))).toEqual(updateInitialState({
-            isActiveArticleLoaded: true
+            isActiveArticleLoaded: true,
         }));
     });
 
     it("Reducer should change active article on drop correctly", () => {
         expect(reducer(initialState, ActionCreator.dropActiveArticle())).toEqual(updateInitialState({
-            activeArticle: null
+            activeArticle: null,
         }));
     });
 
     it("Reducer should change refresh status correctly", () => {
         expect(reducer(initialState, ActionCreator.changeRefreshStatus(false))).toEqual(updateInitialState({
-            refreshStatus: false
+            refreshStatus: false,
         }));
         expect(reducer(initialState, ActionCreator.changeRefreshStatus(true))).toEqual(updateInitialState({
-            refreshStatus: true
+            refreshStatus: true,
         }));
     });
 });

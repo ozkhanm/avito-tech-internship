@@ -64,7 +64,7 @@ const MainPage = props => {
 
 const mapStateToProps = state => ({
     articles: state.articles,
-    isDataLoaded: state.isDataLoaded
+    isDataLoaded: state.isDataLoaded,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -73,7 +73,7 @@ const mapDispatchToProps = dispatch => ({
     },
     changeRefreshStatus(status) {
         dispatch(ActionCreator.changeRefreshStatus(status));
-    }
+    },
 })
 
 export { MainPage };

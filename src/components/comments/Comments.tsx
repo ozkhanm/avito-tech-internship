@@ -19,7 +19,7 @@ const Comments = props => {
 const mapStateToProps = state => ({
     articleComments: state.articleComments,
     isCommentLoaded: state.isCommentLoaded,
-    activeArticle: state.activeArticle
+    activeArticle: state.activeArticle,
 });
 
 export { Comments };
