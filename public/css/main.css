@@ -350,9 +350,30 @@
     display: none;
   }
 
+  .header-container {
+    position: fixed;
+    left: 25%;
+    top: 0%;
+
+    display: flex;
+    margin: 0 auto;
+    width: 50%;
+    height: 78px;
+    align-items: center;
+
+    font-size: 36px;
+    font-weight: bold;
+    color: #000;
+
+    background-color: white;
+    border-bottom: 2px solid black;
+
+    text-decoration: none;
+    cursor: default;
+  }
+
   .container {
     padding: 0 25%;
-    margin-top: 100px;
     margin-bottom: 100px;
   }
 
@@ -376,6 +397,9 @@
     }
     .content-block {
       margin-bottom: 10px;
+    }
+    .header {
+      font-size: 28px;
     }
   }
 
@@ -420,44 +444,28 @@
   }
 
   .header {
-    position: fixed;
-    left: 25%;
-    top: 0%;
+    margin: 0;
+    flex-grow: 1;
 
-    margin: 0 auto;
-    width: 50%;
-    padding-top: 25px;
-    padding-bottom: 20px;
-
-    font-size: 36px;
     text-align: center;
-    font-weight: bold;
-    color: #000;
-
-    background-color: white; 
-    border-bottom: 2px solid black;
-
-    text-decoration: none;
-    cursor: default;
   }
 
   .header-controls {
-    position: fixed;
-    top: 35px;
-    left: 27%;
-    z-index: 2;
-    
     display: flex;
-    justify-content: space-between;
-    width: 45%;
+    flex-wrap: nowrap;
   }
 
   .header-controls-button {
     display: block;
     width: 30px;
     height: 30px;
+    margin-right: 5px;
 
     cursor: pointer;
+  }
+
+  .header-controls-button:last-child {
+    margin-right: 0;
   }
 
   .header-controls-return-button {
@@ -484,6 +492,7 @@
 
   .list {
     padding: 0;
+    margin-top: 98px;
   }
 
   .item-container {

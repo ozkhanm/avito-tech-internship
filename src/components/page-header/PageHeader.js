@@ -45,7 +45,7 @@ const PageHeader = (props) => {
 
     return (
         <React.Fragment>
-            <div>
+            <div className="header-container">
                 {renderHeaderControls()}
                 <p className="header">Hacker News</p>
             </div>
