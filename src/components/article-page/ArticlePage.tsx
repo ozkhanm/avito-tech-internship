@@ -7,6 +7,7 @@ import ErrorPage from "../error-page/ErrorPage";
 
 import { getDate } from "../../utils";
 import { ActionCreator } from "../../reducer/action-creator";
+import { PAGE } from "../../constants";
 
 const ArticlePage = props => {
     const { activeArticle, isActiveArticleLoaded, changeActiveArticleId } = props;
@@ -16,7 +17,7 @@ const ArticlePage = props => {
 
         return (
             <>
-                <PageHeader page={"ARTICLE_PAGE"}/>
+                <PageHeader page={PAGE.ARTICLE}/>
                 <div className="item-container">
                     <h1>{activeArticle.title} {activeArticle.url ? <a href={activeArticle.url} className="article-data">({activeArticle.url})</a> : ""}</h1>
                     <div className="article-data-block">

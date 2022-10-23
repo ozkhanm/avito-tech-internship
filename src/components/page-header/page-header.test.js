@@ -4,12 +4,13 @@ import { Router } from "react-router-dom";
 import { PageHeader } from "./PageHeader";
 
 import history from "../../history";
+import { PAGE } from "../../constants";
 
 it("Page header renders correctly on article page screen", () => {
     const tree = renderer
         .create(
             <Router history={history}>
-                <PageHeader page={"ARTICLE_PAGE"}/>
+                <PageHeader page={PAGE.ARTICLE}/>
             </Router>)
         .toJSON();
   
@@ -20,7 +21,7 @@ it("Page header renders correctly on main page screen", () => {
     const tree = renderer
         .create(
             <Router history={history}>
-                <PageHeader page={"MAIN_PAGE"}/>
+                <PageHeader page={PAGE.MAIN}/>
             </Router>)
         .toJSON();
   

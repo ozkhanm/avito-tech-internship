@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import { ActionCreator } from "../../reducer/action-creator";
 import { Operation } from "../../reducer/reducer";
+import { PAGE } from "../../constants";
 
 const PageHeader = props => {
     const { changeActiveArticleLoadingStatus, dropActiveArticle,
@@ -17,7 +18,7 @@ const PageHeader = props => {
     }, 3000);
 
     const renderHeaderControls = () => {
-        if (page === "MAIN_PAGE") {
+        if (page === PAGE.MAIN) {
             return (
                 <div className="header-controls">
                     <a className={`header-controls-button header-controls-refresh-button ${(refreshButtonToggled || refreshStatus) ? "header-controls-refresh-button-animation" : ""}`} onClick={() => {

@@ -8,6 +8,7 @@ import LoadingPage from "../loading-page/LoadingPage";
 import { getDate } from "../../utils";
 import { Operation } from "../../reducer/reducer";
 import { ActionCreator } from "../../reducer/action-creator";
+import { PAGE } from "../../constants";
 
 const MainPage = props => {
     const { articles, isDataLoaded, getArticles, changeRefreshStatus } = props;
@@ -49,7 +50,7 @@ const MainPage = props => {
     if (isDataLoaded) {
         return (
             <>
-                <PageHeader page={"MAIN_PAGE"}/>
+                <PageHeader page={PAGE.MAIN}/>
                 <div className="container">
                     <ul className="list">
                         {getListArticles(articles)}
