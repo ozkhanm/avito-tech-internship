@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading screen renders correctly 1`] = `
+Array [
+  <div>
+    <div
+      className="header-controls"
+    >
+      <a
+        className="header-controls-button header-controls-refresh-button "
+        onClick={[Function]}
+      />
+    </div>
+    <p
+      className="header"
+    >
+      Hacker News
+    </p>
+  </div>,
+  <h1
+    className="load"
+  >
+    Загрузка данных...
+  </h1>,
+]
+`;

@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Error screen renders correctly 1`] = `
+Array [
+  <div>
+    <div
+      className="header-controls"
+    >
+      <a
+        className="header-controls-button header-controls-refresh-button "
+        onClick={[Function]}
+      />
+      <a
+        className="header-controls-button header-controls-return-button"
+        href="/"
+        onClick={[Function]}
+      />
+    </div>
+    <p
+      className="header"
+    >
+      Hacker News
+    </p>
+  </div>,
+  <div
+    className="container"
+  >
+    <div
+      className="load"
+    >
+      <h1>
+        Article does not exist
+      </h1>
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        Return to main page
+      </a>
+    </div>
+  </div>,
+]
+`;

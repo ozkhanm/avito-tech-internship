@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Article screen renders correctly if data is fetching 1`] = `
+Array [
+  <div>
+    <div
+      className="header-controls"
+    >
+      <a
+        className="header-controls-button header-controls-refresh-button "
+        onClick={[Function]}
+      />
+    </div>
+    <p
+      className="header"
+    >
+      Hacker News
+    </p>
+  </div>,
+  <h1
+    className="load"
+  >
+    Загрузка данных...
+  </h1>,
+]
+`;
+
+exports[`Article screen renders correctly if data is loaded 1`] = `
+Array [
+  <div>
+    <div
+      className="header-controls"
+    >
+      <a
+        className="header-controls-button header-controls-refresh-button "
+        onClick={[Function]}
+      />
+      <a
+        className="header-controls-button header-controls-return-button"
+        href="/"
+        onClick={[Function]}
+      />
+    </div>
+    <p
+      className="header"
+    >
+      Hacker News
+    </p>
+  </div>,
+  <div
+    className="item-container"
+  >
+    <h1>
+      Technical Analysis of the DDoS Attacks Against Ukrainian Websites
+       
+      <a
+        className="article-data"
+        href="https://www.cadosecurity.com/technical-analysis-of-the-ddos-attacks-against-ukrainian-websites/"
+      >
+        (
+        https://www.cadosecurity.com/technical-analysis-of-the-ddos-attacks-against-ukrainian-websites/
+        )
+      </a>
+    </h1>
+    <div
+      className="article-data-block"
+    >
+      <p
+        className="article-data"
+      >
+        by: 
+        idletom
+        ,
+      </p>
+      <p
+        className="article-data"
+      >
+        posted: 
+        20.02.2022, 18:33
+        ,
+      </p>
+      <p
+        className="article-data"
+      >
+        comments: 
+        0
+      </p>
+    </div>
+    <hr />
+    <div
+      className="comment-block"
+    >
+      
+    </div>
+  </div>,
+]
+`;
+
+exports[`Article screen renders correctly if error occured 1`] = `
+Array [
+  <div>
+    <div
+      className="header-controls"
+    >
+      <a
+        className="header-controls-button header-controls-refresh-button "
+        onClick={[Function]}
+      />
+      <a
+        className="header-controls-button header-controls-return-button"
+        href="/"
+        onClick={[Function]}
+      />
+    </div>
+    <p
+      className="header"
+    >
+      Hacker News
+    </p>
+  </div>,
+  <div
+    className="container"
+  >
+    <div
+      className="load"
+    >
+      <h1>
+        Article does not exist
+      </h1>
+      <a
+        href="/"
+        onClick={[Function]}
+      >
+        Return to main page
+      </a>
+    </div>
+  </div>,
+]
+`;

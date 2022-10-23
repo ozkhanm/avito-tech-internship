@@ -1,0 +1,78 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Comment component with kids renders correctly 1`] = `
+<div
+  className="comment-item-block"
+>
+  <div
+    className="comment-parent-block"
+  >
+    <div
+      className="comment-item-header-block"
+    >
+      <p
+        className="comment-item"
+      >
+        by: 
+        awill
+      </p>
+      <p
+        className="comment-item"
+      >
+        at: 
+        18.02.2022, 22:16
+      </p>
+    </div>
+    <p
+      className="comment-item-text"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "I feel AT is great for enthusiasts. I want them to become more mainstream, as their reviews are so much better than generic tech sites, but they need a better balance. They sometimes release iPhone, Galaxy or Pixel reviews weeks or even months after launch. Just look at Youtube, and impact on views from being first with a review. Reviews that arrive weeks after a product launch don&#x27;t have mass-market appeal. AT either doesn&#x27;t understand the market, or is understaffed.<p>I get a thorough review can&#x27;t come out on day one, but they need to get something out. Maybe a first look with some opinions, followed by a more thorough review a week later.",
+        }
+      }
+    />
+  </div>
+  <button
+    className="comment-show-more-block"
+    onClick={[Function]}
+    type="button"
+  >
+    show more
+  </button>
+</div>
+`;
+
+exports[`Comment component without kids renders correctly 1`] = `
+<div
+  className="comment-item-block"
+>
+  <div
+    className="comment-parent-block"
+  >
+    <div
+      className="comment-item-header-block"
+    >
+      <p
+        className="comment-item"
+      >
+        by: 
+        vbphprubyjsgo
+      </p>
+      <p
+        className="comment-item"
+      >
+        at: 
+        18.02.2022, 19:27
+      </p>
+    </div>
+    <p
+      className="comment-item-text"
+      dangerouslySetInnerHTML={
+        Object {
+          "__html": "Isn&#x27;t that just a techspam website? I only read their monitor reviews and they were all wrong.",
+        }
+      }
+    />
+  </div>
+</div>
+`;

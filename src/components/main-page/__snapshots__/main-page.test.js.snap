@@ -1,0 +1,135 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Main page renders correctly if data fetched 1`] = `
+Array [
+  <div>
+    <div
+      className="header-controls"
+    >
+      <a
+        className="header-controls-button header-controls-refresh-button "
+        onClick={[Function]}
+      />
+    </div>
+    <p
+      className="header"
+    >
+      Hacker News
+    </p>
+  </div>,
+  <div
+    className="container"
+  >
+    <ul
+      className="list"
+    >
+      <li
+        className="item"
+      >
+        <div
+          className="content-block"
+        >
+          <a
+            className="item-link"
+            href="/30406481"
+            onClick={[Function]}
+          >
+            How to Lose Time and Money
+          </a>
+          <div>
+            <p
+              className="additional-content-block"
+            >
+              by: yarapavan | at: 20.02.2022, 18:33
+            </p>
+          </div>
+        </div>
+        <p
+          className="score"
+        >
+          1
+        </p>
+      </li>
+      <li
+        className="item"
+      >
+        <div
+          className="content-block"
+        >
+          <a
+            className="item-link"
+            href="/30406473"
+            onClick={[Function]}
+          >
+            Technical Analysis of the DDoS Attacks Against Ukrainian Websites
+          </a>
+          <div>
+            <p
+              className="additional-content-block"
+            >
+              by: idletom | at: 20.02.2022, 18:33
+            </p>
+          </div>
+        </div>
+        <p
+          className="score"
+        >
+          1
+        </p>
+      </li>
+      <li
+        className="item"
+      >
+        <div
+          className="content-block"
+        >
+          <a
+            className="item-link"
+            href="/30406031"
+            onClick={[Function]}
+          >
+            Absence of evidence is not evidence of absence: Bayesian view? (2021)
+          </a>
+          <div>
+            <p
+              className="additional-content-block"
+            >
+              by: wrp | at: 20.02.2022, 17:38
+            </p>
+          </div>
+        </div>
+        <p
+          className="score"
+        >
+          2
+        </p>
+      </li>
+    </ul>
+  </div>,
+]
+`;
+
+exports[`Main page renders correctly if no data fetched 1`] = `
+Array [
+  <div>
+    <div
+      className="header-controls"
+    >
+      <a
+        className="header-controls-button header-controls-refresh-button "
+        onClick={[Function]}
+      />
+    </div>
+    <p
+      className="header"
+    >
+      Hacker News
+    </p>
+  </div>,
+  <h1
+    className="load"
+  >
+    Загрузка данных...
+  </h1>,
+]
+`;
