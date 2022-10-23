@@ -1,15 +1,14 @@
-import React from "react";
 import renderer from "react-test-renderer";
-import {Router} from "react-router-dom";
-import {Provider} from "react-redux";
-import {createStore} from "redux";
+import { Router } from "react-router-dom";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
 
-import {ArticlePage} from "./ArticlePage";
+import { ArticlePage } from "./ArticlePage";
 
 import history from "../../history";
-import {reducer} from "../../reducer/reducer";
+import { reducer } from "../../reducer/reducer";
 
-it(`Article screen renders correctly if data is fetching`, () => {
+it("Article screen renders correctly if data is fetching", () => {
     const tree = renderer
         .create(
             <Provider store={createStore(reducer)}>
@@ -20,7 +19,7 @@ it(`Article screen renders correctly if data is fetching`, () => {
     expect(tree).toMatchSnapshot();
 });
 
-it(`Article screen renders correctly if data is loaded`, () => {
+it("Article screen renders correctly if data is loaded", () => {
     const article = {
         "by" : "idletom",
         "descendants" : 0,
@@ -29,7 +28,7 @@ it(`Article screen renders correctly if data is loaded`, () => {
         "time" : 1645371191,
         "title" : "Technical Analysis of the DDoS Attacks Against Ukrainian Websites",
         "type" : "story",
-        "url" : "https://www.cadosecurity.com/technical-analysis-of-the-ddos-attacks-against-ukrainian-websites/"
+        "url" : "https://www.cadosecurity.com/technical-analysis-of-the-ddos-attacks-against-ukrainian-websites/",
     };
     const tree = renderer
         .create(
@@ -43,7 +42,7 @@ it(`Article screen renders correctly if data is loaded`, () => {
     expect(tree).toMatchSnapshot();
 });
 
-it(`Article screen renders correctly if error occured`, () => {
+it("Article screen renders correctly if error occured", () => {
     const tree = renderer
         .create(
             <Provider store={createStore(reducer)}>

@@ -1,15 +1,14 @@
-import React from "react";
 import renderer from "react-test-renderer";
-import {Router} from "react-router-dom";
-import {Provider} from "react-redux";
-import {createStore} from "redux";
+import { Router } from "react-router-dom";
+import { Provider } from "react-redux";
+import { createStore } from "redux";
 
 import ErrorPage from "./ErrorPage";
 
 import history from "../../history";
-import {reducer} from "../../reducer/reducer";
+import { reducer } from "../../reducer/reducer";
 
-it(`Error screen renders correctly`, () => {
+it("Error screen renders correctly", () => {
     const tree = renderer
         .create(
             <Provider store={createStore(reducer)}>

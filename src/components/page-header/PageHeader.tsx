@@ -1,14 +1,14 @@
-import React, {useState} from "react";
-import {connect} from "react-redux";
-import {Link} from "react-router-dom";
+import { useState } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
-import {ActionCreator} from "../../reducer/action-creator";
-import {Operation} from "../../reducer/reducer";
+import { ActionCreator } from "../../reducer/action-creator";
+import { Operation } from "../../reducer/reducer";
 
-const PageHeader = (props) => {
-    const {changeActiveArticleLoadingStatus, dropActiveArticle,
+const PageHeader = props => {
+    const { changeActiveArticleLoadingStatus, dropActiveArticle,
         getArticles, changeCommentsLoadingStatus, activeArticleId, getActiveArticle,
-        isCommentLoaded, refreshStatus, changeRefreshStatus, page} = props;
+        isCommentLoaded, refreshStatus, changeRefreshStatus, page } = props;
     const [refreshButtonToggled, setRefreshButtonToggleStatus] = useState(false);
 
     setTimeout(() => {
@@ -17,10 +17,10 @@ const PageHeader = (props) => {
     }, 3000);
 
     const renderHeaderControls = () => {
-        if (page === `MAIN_PAGE`) {
+        if (page === "MAIN_PAGE") {
             return (
                 <div className="header-controls">
-                    <a className={`header-controls-button header-controls-refresh-button ${(refreshButtonToggled || refreshStatus) ? `header-controls-refresh-button-animation` : ``}`} onClick={() => {
+                    <a className={`header-controls-button header-controls-refresh-button ${(refreshButtonToggled || refreshStatus) ? "header-controls-refresh-button-animation" : ""}`} onClick={() => {
                         setRefreshButtonToggleStatus(true);
                         getArticles();
                     }}/>
@@ -29,12 +29,12 @@ const PageHeader = (props) => {
         } else {
             return (
                 <div className="header-controls">
-                    <a className={`header-controls-button header-controls-refresh-button ${((refreshButtonToggled && !isCommentLoaded) || refreshStatus) ? `header-controls-refresh-button-animation` : ``}`} onClick={() => {
+                    <a className={`header-controls-button header-controls-refresh-button ${((refreshButtonToggled && !isCommentLoaded) || refreshStatus) ? "header-controls-refresh-button-animation" : ""}`} onClick={() => {
                         setRefreshButtonToggleStatus(true);
                         changeCommentsLoadingStatus(false);
                         getActiveArticle(activeArticleId);
                     }}/>
-                    <Link className="header-controls-button header-controls-return-button" to={`/`} onClick={() => {
+                    <Link className="header-controls-button header-controls-return-button" to={"/"} onClick={() => {
                         dropActiveArticle();
                         changeActiveArticleLoadingStatus(false);
                     }}/>
@@ -44,22 +44,22 @@ const PageHeader = (props) => {
     };
 
     return (
-        <React.Fragment>
+        <>
             <div className="header-container">
                 {renderHeaderControls()}
                 <p className="header">Hacker News</p>
             </div>
-        </React.Fragment>
+        </>
     );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
     activeArticleId: state.activeArticleId,
     isCommentLoaded: state.isCommentLoaded,
     refreshStatus: state.refreshStatus
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
     changeActiveArticleLoadingStatus(status) {
         dispatch(ActionCreator.changeActiveArticleLoadingStatus(status));
     },
@@ -80,5 +80,5 @@ const mapDispatchToProps = (dispatch) => ({
     }
 });
 
-export {PageHeader};
+export { PageHeader };
 export default connect(mapStateToProps, mapDispatchToProps)(PageHeader);

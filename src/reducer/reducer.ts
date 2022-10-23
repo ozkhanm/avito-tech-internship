@@ -1,15 +1,15 @@
 import initialState from "./initial-state";
-import {ActionType, ActionCreator} from "./action-creator";
-import {getArticles, getCommentsTree, getItem} from "../api";
+import { ActionType, ActionCreator } from "./action-creator";
+import { getArticles, getCommentsTree, getItem } from "../api";
 
-const Operation = {
-    getArticles: () => async (dispatch) => {
+export const Operation = {
+    getArticles: () => async dispatch => {
         const articles = await getArticles();
 
         dispatch(ActionCreator.getArticles(articles));
         dispatch(ActionCreator.changeLoadingStatus(true));
     },
-    getActiveArticle: (articleId) => async (dispatch) => {
+    getActiveArticle: articleId => async dispatch => {
         const article = await getItem(articleId);
     
         if (article !== null) {
@@ -22,10 +22,10 @@ const Operation = {
         } else {
             dispatch(ActionCreator.getActiveArticle(-1));
         }
-    }
+    },
 };
 
-const reducer = (state = initialState, action) => {
+export const reducer = (state = initialState, action) => {
     switch (action.type) {
         case ActionType.CHANGE_LOADING_STATUS:
             return Object.assign({}, state, {
@@ -75,5 +75,3 @@ const reducer = (state = initialState, action) => {
 
     return state;
 };
-
-export {reducer, Operation};

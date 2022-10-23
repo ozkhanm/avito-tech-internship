@@ -1,16 +1,16 @@
-import React, {useEffect} from "react";
-import {Link} from "react-router-dom";
-import {connect} from "react-redux";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 import PageHeader from "../page-header/PageHeader";
 import LoadingPage from "../loading-page/LoadingPage";
 
-import {getDate} from "../../utils";
-import {Operation} from "../../reducer/reducer";
-import {ActionCreator} from "../../reducer/action-creator";
+import { getDate } from "../../utils";
+import { Operation } from "../../reducer/reducer";
+import { ActionCreator } from "../../reducer/action-creator";
 
-const MainPage = (props) => {
-    const {articles, isDataLoaded, getArticles, changeRefreshStatus} = props;
+const MainPage = props => {
+    const { articles, isDataLoaded, getArticles, changeRefreshStatus } = props;
 
     useEffect(() => {
         const refreshInterval = setInterval(() => {
@@ -23,8 +23,8 @@ const MainPage = (props) => {
         };
     });
 
-    const getListArticles = (articles) => {
-        return articles.map((it) => {
+    const getListArticles = articles => {
+        return articles.map(it => {
             if (it !== null) {
                 const formattedDate = getDate(it.time);
                 const additionalInfo = `by: ${it.by} | at: ${formattedDate}`;
@@ -48,26 +48,26 @@ const MainPage = (props) => {
 
     if (isDataLoaded) {
         return (
-            <React.Fragment>
-                <PageHeader page={`MAIN_PAGE`}/>
+            <>
+                <PageHeader page={"MAIN_PAGE"}/>
                 <div className="container">
                     <ul className="list">
                         {getListArticles(articles)}
                     </ul>
                 </div>
-            </React.Fragment>
+            </>
         );
     } else {
         return <LoadingPage/>;
     }
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
     articles: state.articles,
     isDataLoaded: state.isDataLoaded
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
     getArticles() {
         dispatch(Operation.getArticles());
     },
@@ -76,5 +76,5 @@ const mapDispatchToProps = (dispatch) => ({
     }
 })
 
-export {MainPage};
+export { MainPage };
 export default connect(mapStateToProps, mapDispatchToProps)(MainPage);

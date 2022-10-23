@@ -1,4 +1,4 @@
-const initialState = {
+export default {
     articles: [],
     activeArticle: null,
     articleComments: [],
@@ -8,5 +8,3 @@ const initialState = {
     activeArticleId: -1,
     refreshStatus: false
 };
-
-export default initialState;

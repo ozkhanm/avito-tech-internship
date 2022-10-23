@@ -1,15 +1,14 @@
-import React from "react";
-import {Router, Switch, Route} from "react-router-dom";
-import {connect} from "react-redux";
+import { Router, Switch, Route } from "react-router-dom";
+import { connect} from "react-redux";
 
 import MainPage from "./components/main-page/MainPage";
 import ArticlePage from "./components/article-page/ArticlePage";
 
 import history from "./history";
-import {Operation} from "./reducer/reducer";
+import { Operation } from "./reducer/reducer";
 
-const App = (props) => {
-  const {getActiveArticle, getArticles} = props;
+const App = props => {
+  const { getActiveArticle, getArticles } = props;
 
   return (
     <Router history={history}>
@@ -33,7 +32,7 @@ const App = (props) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   getActiveArticle(articleId) {
     dispatch(Operation.getActiveArticle(articleId));
   },

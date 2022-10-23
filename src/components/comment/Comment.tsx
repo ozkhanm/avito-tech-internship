@@ -1,16 +1,16 @@
-import React, {useState} from "react";
+import { useState } from "react";
 
-import {getDate, createMarkup} from "../../utils";
+import { getDate, createMarkup } from "../../utils";
 
-const Comment = (props) => {
-    const {comment} = props;
+const Comment = props => {
+    const { comment } = props;
     const [isButtonPressed, setIsButtonPressed] = useState(false);
     const [kidsCommentsParentId, setKidsCommentsParentId] = useState(-1);
 
-    const getButtonElement = (comment) => {
+    const getButtonElement = comment => {
         const id = comment.id;
 
-        if ((!isButtonPressed) && (comment.hasOwnProperty(`kids`))) {
+        if ((!isButtonPressed) && (comment.hasOwnProperty("kids"))) {
             return (
                 <button className="comment-show-more-block" type="button" onClick={() => {
                     setKidsCommentsParentId(id);
@@ -22,7 +22,7 @@ const Comment = (props) => {
         }
     };
 
-    const getCommentBlock = (comment) => {
+    const getCommentBlock = comment => {
         return (
             <div className="comment-parent-block">
                 <div className="comment-item-header-block">
@@ -34,13 +34,13 @@ const Comment = (props) => {
         );
     };
 
-    const getSubcomments = (comments) => {
-        return comments.map((it) => {
-            if ((!it.hasOwnProperty(`deleted`)) && (!it.hasOwnProperty(`dead`))) {
+    const getSubcomments = comments => {
+        return comments.map(it => {
+            if ((!it.hasOwnProperty("deleted")) && (!it.hasOwnProperty("dead"))) {
                 return (
                     <div key={it.id} className="comment-item-block">
                         {getCommentBlock(it)}
-                        {it.hasOwnProperty(`kids`) ? getSubcomments(it.kids) : null}
+                        {it.hasOwnProperty("kids") ? getSubcomments(it.kids) : null}
                     </div>
                 ); 
             } else {
@@ -49,19 +49,19 @@ const Comment = (props) => {
         });
     };
 
-    const getSubcommentElement = (id) => {
+    const getSubcommentElement = id => {
         if (kidsCommentsParentId === id) {
             const comments = comment.kids;
             
             return (
-                <React.Fragment>
+                <>
                     {getSubcomments(comments)}
-                </React.Fragment>
+                </>
             );
         }
     };
 
-    const getParentCommentElement = (comment) => {
+    const getParentCommentElement = comment => {
         return (
             <div className="comment-item-block">
                 {getCommentBlock(comment)}
@@ -71,7 +71,7 @@ const Comment = (props) => {
         );
     };
 
-    if ((!comment.hasOwnProperty(`deleted`)) && (!comment.hasOwnProperty(`dead`))) {
+    if ((!comment.hasOwnProperty("deleted")) && (!comment.hasOwnProperty("dead"))) {
         return getParentCommentElement(comment);
     } else {
         return null;
