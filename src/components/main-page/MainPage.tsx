@@ -10,9 +10,7 @@ import { Operation } from "../../reducer/reducer";
 import { ActionCreator } from "../../reducer/action-creator";
 import { PAGE } from "../../constants";
 
-const MainPage = props => {
-    const { articles, isDataLoaded, getArticles, changeRefreshStatus } = props;
-
+const MainPage = ({ articles, isDataLoaded, getArticles, changeRefreshStatus }) => {
     useEffect(() => {
         const refreshInterval = setInterval(() => {
             changeRefreshStatus(true);

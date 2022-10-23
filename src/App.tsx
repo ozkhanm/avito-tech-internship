@@ -7,9 +7,7 @@ import ArticlePage from "./components/article-page/ArticlePage";
 import history from "./history";
 import { Operation } from "./reducer/reducer";
 
-const App = props => {
-  const { getActiveArticle, getArticles } = props;
-
+const App = ({ getActiveArticle, getArticles }) => {
   return (
     <Router history={history}>
       <Switch>

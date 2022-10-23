@@ -9,9 +9,7 @@ import { getDate } from "../../utils";
 import { ActionCreator } from "../../reducer/action-creator";
 import { PAGE } from "../../constants";
 
-const ArticlePage = props => {
-    const { activeArticle, isActiveArticleLoaded, changeActiveArticleId } = props;
-
+const ArticlePage = ({ activeArticle, isActiveArticleLoaded, changeActiveArticleId }) => {
     if (isActiveArticleLoaded) {
         changeActiveArticleId(activeArticle.id);
 

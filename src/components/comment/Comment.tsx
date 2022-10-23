@@ -2,8 +2,7 @@ import { useState } from "react";
 
 import { getDate, createMarkup } from "../../utils";
 
-const Comment = props => {
-    const { comment } = props;
+const Comment = ({ comment }) => {
     const [isButtonPressed, setIsButtonPressed] = useState(false);
     const [kidsCommentsParentId, setKidsCommentsParentId] = useState(-1);
 

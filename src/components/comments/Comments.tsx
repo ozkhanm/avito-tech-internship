@@ -2,9 +2,7 @@ import { connect } from "react-redux";
 
 import Comment from "../comment/Comment";
 
-const Comments = props => {
-    const { articleComments, isCommentLoaded } = props;
-
+const Comments = ({ articleComments, isCommentLoaded }) => {
     const getCommentsElements = comments => {
         return comments.map(it => <Comment key={it.id} comment={it}/>);
     };
