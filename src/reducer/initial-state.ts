@@ -1,4 +1,4 @@
-export default {
+export const initialState = {
     articles: [],
     activeArticle: null,
     articleComments: [],
@@ -6,5 +6,6 @@ export default {
     isCommentLoaded: false,
     isActiveArticleLoaded: false,
     activeArticleId: -1,
-    refreshStatus: false
+    refreshStatus: false,
+    errorMessage: "",
 };

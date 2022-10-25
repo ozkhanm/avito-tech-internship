@@ -5,19 +5,6 @@ Array [
   <div
     className="header-container"
   >
-    <div
-      className="header-controls"
-    >
-      <a
-        className="header-controls-button header-controls-refresh-button "
-        onClick={[Function]}
-      />
-      <a
-        className="header-controls-button header-controls-return-button"
-        href="/"
-        onClick={[Function]}
-      />
-    </div>
     <p
       className="header"
     >
@@ -31,7 +18,7 @@ Array [
       className="load"
     >
       <h1>
-        Article does not exist
+        
       </h1>
       <a
         href="/"

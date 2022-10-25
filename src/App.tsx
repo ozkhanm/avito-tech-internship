@@ -1,28 +1,29 @@
 import { Router, Switch, Route } from "react-router-dom";
-import { connect} from "react-redux";
+import { connect } from "react-redux";
 
 import MainPage from "./components/main-page/MainPage";
 import ArticlePage from "./components/article-page/ArticlePage";
+import ErrorPage from "./components/error-page/ErrorPage";
 
 import history from "./history";
-import { Operation } from "./reducer/reducer";
+import { RootState } from "./reducer/reducer";
 
-const App = ({ getActiveArticle, getArticles }) => {
+interface AppProps {
+  errorMessage: string,
+  activeArticle: number | null,
+}
+
+const App: React.FC<AppProps> = ({ errorMessage, activeArticle }) => {
   return (
     <Router history={history}>
       <Switch>
-        <Route exact path="/" render={() => {
-          getArticles();
-
-          return <MainPage/>;
-        }}>
+        <Route exact path="/" render={() => !errorMessage ? <MainPage/> : <ErrorPage />}>
         </Route>
-        <Route exact strict path="/:id" render={(renderProps) => {
+        <Route exact strict path="/:id" render={renderProps => {
           const articleId = parseInt(renderProps.match.params.id, 10);
 
-          getActiveArticle(articleId);
-
-          return <ArticlePage/>;
+          return !errorMessage && activeArticle !== -1 ? <ArticlePage id={articleId}/> : 
+            <ErrorPage />;
         }}>
         </Route>
       </Switch>
@@ -30,13 +31,9 @@ const App = ({ getActiveArticle, getArticles }) => {
   );
 };
 
-const mapDispatchToProps = dispatch => ({
-  getActiveArticle(articleId) {
-    dispatch(Operation.getActiveArticle(articleId));
-  },
-  getArticles() {
-    dispatch(Operation.getArticles());
-  },
+const mapStateToProps = (state: RootState) => ({
+  errorMessage: state.errorMessage,
+  activeArticle: state.activeArticle,
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps)(App);

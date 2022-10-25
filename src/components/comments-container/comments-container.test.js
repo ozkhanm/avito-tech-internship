@@ -1,10 +1,14 @@
 import renderer from "react-test-renderer";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
 
-import { Comments } from "./Comments";
+import { CommentsContainer } from "./CommentsContainer";
+
+import { reducer } from "../../reducer/reducer";
 
 it("Comments container renders correctly if data is fetching", () => {
     const tree = renderer
-        .create(<Comments articleComments={[]} isCommentLoaded={false}/>)
+        .create(<CommentsContainer articleComments={[]} isCommentLoaded={false}/>)
         .toJSON();
   
     expect(tree).toMatchSnapshot();
@@ -40,7 +44,10 @@ it("Comments container renders correctly if data fetched", () => {
         }
     ];
     const tree = renderer
-        .create(<Comments articleComments={articleComments} isCommentLoaded={true}/>)
+        .create(
+            <Provider store={createStore(reducer)}>
+                <CommentsContainer articleComments={articleComments} isCommentLoaded={true}/>
+            </Provider>)
         .toJSON();
   
     expect(tree).toMatchSnapshot();

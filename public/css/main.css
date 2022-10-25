@@ -435,12 +435,14 @@
 
   .load {
     position: absolute;
-    left: calc(50% - 134px);
+    left: 50%;
     top: 45%;
 
     margin: 0 auto;
 
     text-align: center;
+
+    translate: -50%;
   }
 
   .header {

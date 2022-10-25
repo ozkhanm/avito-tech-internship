@@ -5,38 +5,49 @@ import { connect } from "react-redux";
 import PageHeader from "../page-header/PageHeader";
 import LoadingPage from "../loading-page/LoadingPage";
 
-import { getDate } from "../../utils";
-import { Operation } from "../../reducer/reducer";
-import { ActionCreator } from "../../reducer/action-creator";
-import { PAGE } from "../../constants";
+import { getFormattedDate } from "../../utils";
+import { AppDispatch, Operation, RootState } from "../../reducer/reducer";
+import { PAGE, REFRESH_TIMEOUT } from "../../constants";
+import { IArticle } from "../../types/IArticle";
 
-const MainPage = ({ articles, isDataLoaded, getArticles, changeRefreshStatus }) => {
+interface MainPageProps {
+    articles: IArticle[],
+    isDataLoaded: boolean,
+    getArticles: () => void,
+}
+
+const MainPage: React.FC<MainPageProps> = ({ articles, isDataLoaded, getArticles }) => {
     useEffect(() => {
         const refreshInterval = setInterval(() => {
-            changeRefreshStatus(true);
             getArticles();
-          }, 60000);
+          }, REFRESH_TIMEOUT);
 
         return () => {
             clearInterval(refreshInterval);
         };
     });
 
-    const getListArticles = articles => {
-        return articles.map(it => {
+    useEffect(() => {
+        if (articles.length === 0 && isDataLoaded !== true) {
+            getArticles();
+        }
+    }, []);
+
+    const getListArticles = (articles: IArticle[]) => {
+        return articles.map((it: IArticle) => {
             if (it !== null) {
-                const formattedDate = getDate(it.time);
-                const additionalInfo = `by: ${it.by} | at: ${formattedDate}`;
+                const formattedDate = getFormattedDate(it.time);
+                const additionalInfo = `by: ${ it.by } | at: ${ formattedDate }`;
 
                 return (
                     <li key={it.id} className="item">                                    
                         <div className="content-block">
-                            <Link to={`/${it.id}`} className="item-link">{it.title}</Link>
+                            <Link to={`/${it.id}`} className="item-link">{ it.title }</Link>
                             <div>
-                                <p className="additional-content-block">{additionalInfo}</p>
+                                <p className="additional-content-block">{ additionalInfo }</p>
                             </div>
                         </div>
-                        <p className="score">{it.score}</p>
+                        <p className="score">{ it.score }</p>
                     </li>
                 );
             } else {
@@ -51,7 +62,7 @@ const MainPage = ({ articles, isDataLoaded, getArticles, changeRefreshStatus }) 
                 <PageHeader page={PAGE.MAIN}/>
                 <div className="container">
                     <ul className="list">
-                        {getListArticles(articles)}
+                        { getListArticles(articles) }
                     </ul>
                 </div>
             </>
@@ -61,17 +72,14 @@ const MainPage = ({ articles, isDataLoaded, getArticles, changeRefreshStatus }) 
     }
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state: RootState) => ({
     articles: state.articles,
     isDataLoaded: state.isDataLoaded,
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch: AppDispatch) => ({
     getArticles() {
         dispatch(Operation.getArticles());
-    },
-    changeRefreshStatus(status) {
-        dispatch(ActionCreator.changeRefreshStatus(status));
     },
 })
 

@@ -1,15 +1,20 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-import { getDate, createMarkup } from "../../utils";
+import { getFormattedDate, getFormattedComment } from "../../utils";
+import { IComment } from "../../types/IComment";
 
-const Comment = ({ comment }) => {
+interface CommentProps {
+    comment: IComment,
+}
+
+const Comment: React.FC<CommentProps> = ({ comment }) => {
     const [isButtonPressed, setIsButtonPressed] = useState(false);
     const [kidsCommentsParentId, setKidsCommentsParentId] = useState(-1);
 
-    const getButtonElement = comment => {
+    const getButtonElement = (comment: IComment) => {
         const id = comment.id;
 
-        if ((!isButtonPressed) && (comment.hasOwnProperty("kids"))) {
+        if ((!isButtonPressed) && (comment.kids)) {
             return (
                 <button className="comment-show-more-block" type="button" onClick={() => {
                     setKidsCommentsParentId(id);
@@ -21,25 +26,25 @@ const Comment = ({ comment }) => {
         }
     };
 
-    const getCommentBlock = comment => {
+    const getCommentBlock = (comment: IComment) => {
         return (
             <div className="comment-parent-block">
                 <div className="comment-item-header-block">
-                    <p className="comment-item">by: {comment.by}</p>
-                    <p className="comment-item">at: {getDate(comment.time)}</p>
+                    <p className="comment-item">by: { comment.by }</p>
+                    <p className="comment-item">at: { getFormattedDate(comment.time) }</p>
                 </div>
-                <p className="comment-item-text" dangerouslySetInnerHTML={createMarkup(comment.text)}></p>
+                <p className="comment-item-text" dangerouslySetInnerHTML={getFormattedComment(comment.text)}></p>
             </div>
         );
     };
 
-    const getSubcomments = comments => {
-        return comments.map(it => {
-            if ((!it.hasOwnProperty("deleted")) && (!it.hasOwnProperty("dead"))) {
+    const getSubcomments = (comments: any) => {
+        return comments.map((it: IComment) => {
+            if ((!it.deleted) && (!it.dead)) {
                 return (
                     <div key={it.id} className="comment-item-block">
-                        {getCommentBlock(it)}
-                        {it.hasOwnProperty("kids") ? getSubcomments(it.kids) : null}
+                        { getCommentBlock(it) }
+                        { it.kids ? getSubcomments(it.kids) : null }
                     </div>
                 ); 
             } else {
@@ -48,29 +53,29 @@ const Comment = ({ comment }) => {
         });
     };
 
-    const getSubcommentElement = id => {
+    const getSubcommentElement = (id: number) => {
         if (kidsCommentsParentId === id) {
-            const comments = comment.kids;
+            const comments: any = comment.kids;
             
             return (
                 <>
-                    {getSubcomments(comments)}
+                    { getSubcomments(comments) }
                 </>
             );
         }
     };
 
-    const getParentCommentElement = comment => {
+    const getParentCommentElement = (comment: IComment) => {
         return (
             <div className="comment-item-block">
-                {getCommentBlock(comment)}
-                {getButtonElement(comment)}
-                {getSubcommentElement(comment.id)}
+                { getCommentBlock(comment) }
+                { getButtonElement(comment) }
+                { getSubcommentElement(comment.id) }
             </div>
         );
     };
 
-    if ((!comment.hasOwnProperty("deleted")) && (!comment.hasOwnProperty("dead"))) {
+    if ((!comment.deleted) && (!comment.dead)) {
         return getParentCommentElement(comment);
     } else {
         return null;

@@ -1,77 +1,112 @@
-import initialState from "./initial-state";
+import { batch } from "react-redux";
+import { createStore, applyMiddleware, AnyAction } from "redux";
+import thunk from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension";
+
+import { api } from "../api";
+import { initialState } from "./initial-state";
 import { ActionType, ActionCreator } from "./action-creator";
 import { getArticles, getCommentsTree, getItem } from "../api";
+import { NOT_FOUND_ERROR_MESSAGE } from "../constants";
 
 export const Operation = {
-    getArticles: () => async dispatch => {
-        const articles = await getArticles();
+    getArticles: () => async (dispatch: AppDispatch) => {
+        try {
+            const articles = await getArticles();
 
-        dispatch(ActionCreator.getArticles(articles));
-        dispatch(ActionCreator.changeLoadingStatus(true));
+            batch(() => {
+                dispatch(ActionCreator.getArticles(articles));
+                dispatch(ActionCreator.changeLoadingStatus(true));
+                dispatch(ActionCreator.changeActiveArticleLoadingStatus(true));
+            });
+        } catch(e) {
+            const message = (e as Error).message;
+
+            dispatch(ActionCreator.setErrorMessage(message));
+        }
     },
-    getActiveArticle: articleId => async dispatch => {
-        const article = await getItem(articleId);
+    getActiveArticle: (articleId: number) => async (dispatch: AppDispatch) => {
+        try {
+            const article = await getItem(articleId);
     
-        if (article !== null) {
-            const comments = await getCommentsTree(article);
+            if (article !== null) {
+                const comments = await getCommentsTree(article);
 
-            dispatch(ActionCreator.getActiveArticle(article));
-            dispatch(ActionCreator.getArticleComments(comments));
-            dispatch(ActionCreator.changeActiveArticleLoadingStatus(true));
-            dispatch(ActionCreator.changeCommentsLoadingStatus(true));
-        } else {
-            dispatch(ActionCreator.getActiveArticle(-1));
+                batch(() => {
+                    dispatch(ActionCreator.setActiveArticle(article));
+                    dispatch(ActionCreator.getArticleComments(comments));
+                    dispatch(ActionCreator.changeActiveArticleLoadingStatus(true));
+                    dispatch(ActionCreator.changeCommentsLoadingStatus(true));
+                });
+            } else {
+                dispatch(ActionCreator.setActiveArticle(-1));
+                dispatch(ActionCreator.setErrorMessage(NOT_FOUND_ERROR_MESSAGE));
+            }
+        } catch(e) {
+            const message = (e as Error).message;
+
+            dispatch(ActionCreator.setErrorMessage(message));
         }
     },
 };
 
-export const reducer = (state = initialState, action) => {
-    switch (action.type) {
+export const reducer = (state = initialState, { type, payload }: AnyAction) => {
+    switch (type) {
         case ActionType.CHANGE_LOADING_STATUS:
-            return Object.assign({}, state, {
-                isDataLoaded: action.payload,
-            });
+            return {...state, ...{
+                isDataLoaded: payload,
+            }};
 
         case ActionType.GET_ARTICLES:
-            return Object.assign({}, state, {
-                articles: action.payload,
-            });
+            return {...state, ...{
+                articles: payload,
+            }};
 
         case ActionType.CHANGE_ACTIVE_ARTICLE_ID:
-            return Object.assign({}, state, {
-                activeArticleId: action.payload,
-            });
+            return {...state, ...{
+                activeArticleId: payload,
+            }};
 
         case ActionType.GET_ARTICLE_COMMENTS:
-            return Object.assign({}, state, {
-                articleComments: action.payload,
-            });
+            return {...state, ...{
+                articleComments: payload,
+            }};
 
         case ActionType.CHANGE_COMMENTS_LOADING_STATUS:
-            return Object.assign({}, state, {
-                isCommentLoaded: action.payload,
-            });
+            return {...state, ...{
+                isCommentLoaded: payload,
+            }};
 
-        case ActionType.GET_ACTIVE_ARTICLE:
-            return Object.assign({}, state, {
-                activeArticle: action.payload,
-            });
+        case ActionType.SET_ACTIVE_ARTICLE:
+            return {...state, ...{
+                activeArticle: payload,
+            }};
 
         case ActionType.CHANGE_ACTIVE_ARTICLE_LOADING_STATUS:
-            return Object.assign({}, state, {
-                isActiveArticleLoaded: action.payload,
-            });
+            return {...state, ...{
+                isActiveArticleLoaded: payload,
+            }};
 
         case ActionType.DROP_ACTIVE_ARTICLE:
-            return Object.assign({}, state, {
+            return {...state, ...{
                 activeArticle: null,
-            });
+            }};
 
         case ActionType.CHANGE_REFRESH_STATUS:
-            return Object.assign({}, state, {
-                refreshStatus: action.payload,
-            });
+            return {...state, ...{
+                refreshStatus: payload,
+            }};
+
+        case ActionType.SET_ERROR_MESSAGE:
+            return {...state, ...{
+                errorMessage: payload,
+            }};
     }
 
     return state;
 };
+
+export const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk.withExtraArgument(api))));
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

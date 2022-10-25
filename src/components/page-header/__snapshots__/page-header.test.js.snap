@@ -4,19 +4,6 @@ exports[`Page header renders correctly on article page screen 1`] = `
 <div
   className="header-container"
 >
-  <div
-    className="header-controls"
-  >
-    <a
-      className="header-controls-button header-controls-refresh-button "
-      onClick={[Function]}
-    />
-    <a
-      className="header-controls-button header-controls-return-button"
-      href="/"
-      onClick={[Function]}
-    />
-  </div>
   <p
     className="header"
   >
@@ -29,14 +16,6 @@ exports[`Page header renders correctly on main page screen 1`] = `
 <div
   className="header-container"
 >
-  <div
-    className="header-controls"
-  >
-    <a
-      className="header-controls-button header-controls-refresh-button "
-      onClick={[Function]}
-    />
-  </div>
   <p
     className="header"
   >

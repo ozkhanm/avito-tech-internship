@@ -1,6 +1,6 @@
 import { reducer } from "./reducer";
 import { ActionCreator } from "./action-creator";
-import initialState from "./initial-state";
+import { initialState } from "./initial-state";
 
 const mockArticles = [
     {
@@ -86,7 +86,7 @@ const mockArticle = {
 };
 
 const updateInitialState = data => {
-    return Object.assign({}, initialState, data);
+    return { ...initialState, ...data };
 };
 
 describe("Reducer works correctly", () => {
@@ -131,7 +131,7 @@ describe("Reducer works correctly", () => {
     });
 
     it("Reducer should change active article correctly", () => {
-        expect(reducer(initialState, ActionCreator.getActiveArticle(mockArticle))).toEqual(updateInitialState({
+        expect(reducer(initialState, ActionCreator.setActiveArticle(mockArticle))).toEqual(updateInitialState({
             activeArticle: mockArticle,
         }));
     });
